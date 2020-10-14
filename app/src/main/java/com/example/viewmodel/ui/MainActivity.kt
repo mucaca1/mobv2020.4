@@ -1,7 +1,7 @@
 package com.example.viewmodel.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.viewmodel.R
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_host_fragment
             )
         )
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

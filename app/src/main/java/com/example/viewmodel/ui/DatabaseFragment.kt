@@ -30,11 +30,12 @@ class DatabaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        databaseViewModel = ViewModelProvider(this, Injection.provideViewModelFactory(context!!))
-            .get(DatabaseViewModel::class.java)
+        databaseViewModel =
+            ViewModelProvider(this, Injection.provideViewModelFactory(requireContext()))
+                .get(DatabaseViewModel::class.java)
 
         //TODO: 8. nahradit observer databindingom v xml
-        databaseViewModel.words.observe(this) { words_text.text = it.toString() }
+        databaseViewModel.words.observe(viewLifecycleOwner) { words_text.text = it.toString() }
 
         //TODO: 10. nahradit listener databindingom v xml
         word_btn.setOnClickListener { addWord() }
@@ -43,7 +44,7 @@ class DatabaseFragment : Fragment() {
     //TODO: 10. odstanit funkciu pomocou databindingu v xml
     private fun addWord() {
         val word = word_input.text.toString()
-        if (word.length > 0) {
+        if (word.isNotEmpty()) {
             databaseViewModel.insertWord(word)
             word_input.text.clear()
         }
