@@ -1,11 +1,27 @@
 package com.example.viewmodel.ui.viewModels
 
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
-    val word: MutableLiveData<String> = MutableLiveData()
+    val input: MutableLiveData<String> = MutableLiveData()
 
-    //TODO: 6b.urobit transformaciu slova aby sa zobrazoval text "Slovo je: "
+    private val _word: MutableLiveData<String> = MutableLiveData()
+
+    val welcome = Transformations.map(input) { w -> "Slovo je: $w" }
+
+    val word: LiveData<String>
+        get() = _word
+
+    fun changeWord() {
+        input.value?.apply {
+            if (length > 0) {
+                _word.postValue(this)
+            }
+        }
+    }
+
 }

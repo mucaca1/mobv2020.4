@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.viewmodel.R
 import com.example.viewmodel.databinding.FragmentHomeBinding
 import com.example.viewmodel.ui.viewModels.HomeViewModel
@@ -29,5 +30,12 @@ class HomeFragment : Fragment() {
         binding.model = homeViewModel
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.dbBtn.setOnClickListener {
+            it.findNavController().navigate(R.id.action_hometo_database)
+        }
     }
 }
