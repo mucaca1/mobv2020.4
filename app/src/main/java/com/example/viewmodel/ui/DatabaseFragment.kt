@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.example.viewmodel.R
 import com.example.viewmodel.databinding.FragmentDatabaseBinding
-import com.example.viewmodel.databinding.FragmentHomeBinding
 import com.example.viewmodel.ui.viewModels.DatabaseViewModel
 import com.opinyour.android.app.data.utils.Injection
 import kotlinx.android.synthetic.main.fragment_database.*
@@ -26,9 +25,8 @@ class DatabaseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_database, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_database, container, true)
         binding.lifecycleOwner = this
         binding.databaseModel = databaseViewModel
 

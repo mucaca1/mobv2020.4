@@ -46,12 +46,24 @@
             app:layout_constraintTop_toBottomOf="@+id/word_input" />
 
         <!-- TODO: 6. umoznit navigaciu do DatabaseFragmentu po stlaceni tlacidla -->
+
+        <TextView
+            android:id="@+id/liveText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{homeModel.transformText}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/words_text"
+            />
+
         <Button
             android:id="@+id/data_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show data fragment"
-            app:layout_constraintTop_toBottomOf="@+id/words_text"
+            app:layout_constraintTop_toBottomOf="@+id/liveText"
             app:layout_constraintRight_toRightOf="parent"
             />
 
