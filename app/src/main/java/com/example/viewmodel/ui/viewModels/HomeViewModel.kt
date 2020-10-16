@@ -17,10 +17,10 @@ class HomeViewModel : ViewModel() {
     fun changeWord() {
         input.value?.apply {
             if (this.isNotEmpty()) {
-                _word.value = this
+                _word.value = "Slovo je: " + this
             }
         }
     }
 
-    //TODO: 6b.urobit transformaciu slova aby sa zobrazoval text "Slovo je: "
+    //TODO: 6b.urobit transformaciu slova aby sa zobrazoval text
 }
