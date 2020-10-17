@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.example.viewmodel.R
 import com.example.viewmodel.databinding.FragmentDatabaseBinding
 import com.example.viewmodel.ui.viewModels.DatabaseViewModel
@@ -26,8 +25,15 @@ class DatabaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_database, container, true)
+        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_database, container, false
+        )
         binding.lifecycleOwner = this
+        databaseViewModel =
+            ViewModelProvider(this, Injection.provideViewModelFactory(requireContext()))
+                .get(DatabaseViewModel::class.java)
+
         binding.databaseModel = databaseViewModel
 
         return binding.root
@@ -39,20 +45,5 @@ class DatabaseFragment : Fragment() {
         databaseViewModel =
             ViewModelProvider(this, Injection.provideViewModelFactory(requireContext()))
                 .get(DatabaseViewModel::class.java)
-
-        //TODO: 8. nahradit observer databindingom v xml
-        databaseViewModel.words.observe(viewLifecycleOwner) { words_text.text = it.toString() }
-
-        //TODO: 10. nahradit listener databindingom v xml
-        word_btn.setOnClickListener { addWord() }
-    }
-
-    //TODO: 10. odstanit funkciu pomocou databindingu v xml
-    private fun addWord() {
-        val word = word_input.text.toString()
-        if (word.isNotEmpty()) {
-            databaseViewModel.insertWord(word)
-            word_input.text.clear()
-        }
     }
 }
