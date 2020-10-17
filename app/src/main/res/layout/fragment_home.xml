@@ -45,8 +45,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/word_input" />
 
-        <!-- TODO: 6. umoznit navigaciu do DatabaseFragmentu po stlaceni tlacidla -->
-
         <TextView
             android:id="@+id/liveText"
             android:layout_width="match_parent"

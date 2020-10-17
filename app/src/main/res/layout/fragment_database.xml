@@ -54,5 +54,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/live_text" />
 
+        <Button
+            android:id="@+id/deleteThis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete this"
+            android:onClick="@{() -> databaseModel.deleteWord()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/words_text"
+            app:layout_constraintBottom_toTopOf="@+id/deleteSub"
+            />
+        <Button
+            android:id="@+id/deleteSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete substring"
+            android:onClick="@{() -> databaseModel.deleteSubWord()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deleteThis"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

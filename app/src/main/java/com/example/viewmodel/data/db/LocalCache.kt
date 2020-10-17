@@ -19,6 +19,10 @@ class LocalCache(private val dao: DbDao) {
         dao.updateWord(wordItem)
     }
 
+    fun deleteSubWord(wordItem: WordItem) {
+        GlobalScope.launch { dao.deleteContainsWorld(wordItem.toString()) }
+    }
+
     fun deleteWord(wordItem: WordItem) {
         GlobalScope.launch { dao.deleteWord(wordItem) }
     }

@@ -48,5 +48,13 @@ class DataRepository private constructor(
         cache.insertWord(wordItem)
     }
 
+    suspend fun deleteWord(wordItem: WordItem) {
+        cache.deleteWord(wordItem)
+    }
+
+    suspend fun deleteSubWord(wordItem: WordItem) {
+        cache.deleteSubWord(wordItem)
+    }
+
 
 }

@@ -20,4 +20,22 @@ class DatabaseViewModel(private val repository: DataRepository) : ViewModel() {
             }
         }
     }
+
+    fun deleteWord() {
+        liveText.value?.let {
+            viewModelScope.launch {
+                repository.deleteWord(WordItem(it))
+                liveText.postValue("")
+            }
+        }
+    }
+
+    fun deleteSubWord() {
+        liveText.value?.let {
+            viewModelScope.launch {
+                repository.deleteSubWord(WordItem(it))
+                liveText.postValue("")
+            }
+        }
+    }
 }

@@ -21,6 +21,9 @@ interface DbDao {
     @Query("SELECT * FROM words")
     fun getWords(): LiveData<List<WordItem>>
 
+    @Query("DELETE FROM words WHERE word LIKE '%' || :wordItem || '%'")
+    fun deleteContainsWorld(wordItem: String)
+
     //TODO: 11. vymazat slova obsahujuce slovo, pomocou databinding
     //TODO: 12. pridat slovam obsahujuce slovo, priponu - databinding
     //TODO: 13. vytvorit DAO metody pre ImageItem
